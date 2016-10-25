@@ -9,7 +9,9 @@
 * @since Twenty Sixteen 1.0
 */
 ?>
-
+ <!-- Close barba-container & braba-wrapper -->
+ </div>
+</div>
 <footer class="footer push" role="contentinfo">
 	<div id="inner-footer" class="row">
 		<div class="large-12 medium-12 columns">

@@ -1,6 +1,6 @@
 jQuery(document).ready(function() {
 console.log("Ready TRANS");
-
+// Aggiungere tweenLite
   var FadeTransition = Barba.BaseTransition.extend({
     start: function() {
         console.log("Start Trans");
@@ -21,10 +21,13 @@ console.log("Ready TRANS");
        * this.oldContainer is the HTMLElement of the old Container
        */
         console.log("fadeout");
+       jQuery.sidr('close','sidr-left');
+       jQuery.sidr('close','sidr-right');
        var deferred = Barba.Utils.deferred();
        ricaLoader.show(deferred.resolve,500);
+
        return deferred.promise;
-      //  jQuery(".is-off-canvas-open").toggleClass('is-off-canvas-open is-open-left');;
+
       // return jQuery(this.oldContainer).velocity("slideUp", { duration: 1500 }).promise();
     },
 
