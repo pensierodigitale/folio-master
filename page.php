@@ -13,8 +13,6 @@
 
 get_header(); ?>
 
-<div id="barba-wrapper">
-			<div class="barba-container" data-namespace="page">
 	<main id="container"  role="main">
 		<?php
 		// Start the loop.
@@ -33,11 +31,5 @@ get_header(); ?>
 		?>
 
 	</main><!-- .site-main -->
-</div>
-</div>
-	<?php get_sidebar( 'content-bottom' ); ?>
 
-
-
-<?php get_sidebar(); ?>
 <?php get_footer(); ?>
