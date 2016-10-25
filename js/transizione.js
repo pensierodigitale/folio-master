@@ -1,6 +1,6 @@
 jQuery(document).ready(function() {
 console.log("Ready TRANS");
-
+// Aggiungere tweenLite
   var FadeTransition = Barba.BaseTransition.extend({
     start: function() {
         console.log("Start Trans");
