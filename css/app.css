@@ -1,0 +1,86 @@
+
+
+/* ==========================================================================
+   Author's custom styles
+   ========================================================================== */
+
+
+
+
+
+
+
+html, body {
+  margin: 0;
+  padding: 0;
+}
+
+.intro-thumb {
+  display: block;
+  height: 25vh;
+  width: 100%;
+  position: relative;
+}
+
+.full {
+  display: block;
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background-position: center center;
+  background-size: cover;
+}
+
+.half {
+  display: block;
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background-position: center center;
+  background-size: cover;
+  height: 50%;
+}
+
+a.back {
+  color: white;
+  position: absolute;
+  top: 80px;
+  left: 10px;
+  color: #000;
+}
+
+.barba-container {
+  display: block;
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+}
+
+
+.column-no, .columns-no {
+    padding-left: 0rem;
+    padding-right: 0rem;
+}
+
+.divider, hr {
+    border-color: #eeeeee -moz-use-text-color -moz-use-text-color;
+    border-style: solid none none;
+    border-width: 1px 0 0;
+    clear: both;
+    height: 0;
+    margin: 3rem 0;
+}
+
+.thumbnail {
+    margin-bottom: 3rem;
+    overflow: hidden;
+    position: relative;
+}
+
+
