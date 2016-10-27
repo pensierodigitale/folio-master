@@ -116,7 +116,7 @@ function folio_setup() {
 	* This theme styles the visual editor to resemble the theme style,
 	* specifically font, colors, icons, and column width.
 	*/
-	add_editor_style( array( 'css/editor-style.css', foliotheme_fonts_url() ) );
+	add_editor_style( array( 'css/editor-style.css') );
 	// Indicate widget sidebars can use selective refresh in the Customizer.
 	add_theme_support( 'customize-selective-refresh-widgets' );
 }
@@ -172,41 +172,8 @@ function foliotheme_widgets_init() {
 	) );
 }
 add_action( 'widgets_init', 'foliotheme_widgets_init' );
-if ( ! function_exists( 'foliotheme_fonts_url' ) ) :
-/**
-* Register Google fonts for Twenty Sixteen.
-*
-* Create your own foliotheme_fonts_url() function to override in a child theme.
-*
-* @since Twenty Sixteen 1.0
-*
-* @return string Google fonts URL for the theme.
-*/
-function foliotheme_fonts_url() {
-	$fonts_url = '';
-	$fonts     = array();
-	$subsets   = 'latin,latin-ext';
-	/* translators: If there are characters in your language that are not supported by Merriweather, translate this to 'off'. Do not translate into your own language. */
-	if ( 'off' !== _x( 'on', 'Merriweather font: on or off', 'foliotheme' ) ) {
-		$fonts[] = 'Merriweather:400,700,900,400italic,700italic,900italic';
-	}
-	/* translators: If there are characters in your language that are not supported by Montserrat, translate this to 'off'. Do not translate into your own language. */
-	if ( 'off' !== _x( 'on', 'Montserrat font: on or off', 'foliotheme' ) ) {
-		$fonts[] = 'Montserrat:400,700';
-	}
-	/* translators: If there are characters in your language that are not supported by Inconsolata, translate this to 'off'. Do not translate into your own language. */
-	if ( 'off' !== _x( 'on', 'Inconsolata font: on or off', 'foliotheme' ) ) {
-		$fonts[] = 'Inconsolata:400';
-	}
-	if ( $fonts ) {
-		$fonts_url = add_query_arg( array(
-			'family' => urlencode( implode( '|', $fonts ) ),
-			'subset' => urlencode( $subsets ),
-		), 'https://fonts.googleapis.com/css' );
-	}
-	return $fonts_url;
-}
-endif;
+
+
 /**
 * Handles JavaScript detection.
 *
@@ -224,29 +191,14 @@ endif;
 	* @since Twenty Sixteen 1.0
 	*/
 	function foliotheme_scripts() {
-	// Add custom fonts, used in the main stylesheet.
-	wp_enqueue_style( 'foliotheme-fonts', foliotheme_fonts_url(), array(), null );
-	// Add Genericons, used in the main stylesheet.
-	wp_enqueue_style( 'genericons', get_template_directory_uri() . '/genericons/genericons.css', array(), '3.4.1' );
+   wp_enqueue_style( 'foliotheme-style', get_stylesheet_uri() );
 	// Add bootstrap min main stylesheet.
 	wp_enqueue_style( 'foundation', get_template_directory_uri() . '/css/foundation.min.css', array(), '3.4.1' );
 	// Add custom style.
 	wp_enqueue_style( 'custom', get_template_directory_uri() . '/css/custom.css', array(), '3.4.1' );
 	// Theme stylesheet.
-	// Add custom style.
-	wp_enqueue_style( 'animate', get_template_directory_uri() . '/css/animate.css', array(), '3.4.1' );
-	// Theme stylesheet.
 	wp_enqueue_style( 'ionicons', get_template_directory_uri() . '/css/ionicons.min.css', array(), '3.4.1' );
-	wp_enqueue_style( 'timber', get_template_directory_uri() . '/css/timber.css', array(), '3.4.1' );
 	// Theme stylesheet.
-	wp_enqueue_style( 'foliotheme-style', get_stylesheet_uri() );
-	wp_enqueue_script( 'foliotheme-skip-link-focus-fix', get_template_directory_uri() . '/js/skip-link-focus-fix.js', array(), '20160816', true );
-	if ( is_singular() && comments_open() && get_option( 'thread_comments' ) ) {
-	wp_enqueue_script( 'comment-reply' );
-	}
-	if ( is_singular() && wp_attachment_is_image() ) {
-	wp_enqueue_script( 'foliotheme-keyboard-image-navigation', get_template_directory_uri() . '/js/keyboard-image-navigation.js', array( 'jquery' ), '20160816' );
-	}
 	wp_enqueue_script( 'foliotheme-script', get_template_directory_uri() . '/js/functions.js', array( 'jquery' ), '20160816', true );
 	wp_enqueue_script( 'foundation-js', get_template_directory_uri() . '/js/vendor/foundation.min.js', array( 'jquery' ), '20160816', true );
 	wp_enqueue_script( 'scroll', get_template_directory_uri() . '/js/scrollreveal.min.js', array( 'jquery' ), '20160816', true );
@@ -264,6 +216,13 @@ endif;
 	) );
 	}
 	add_action( 'wp_enqueue_scripts', 'foliotheme_scripts' );
+
+	function wpb_add_google_fonts() {
+
+wp_enqueue_style( 'wpb-google-fonts', 'https://fonts.googleapis.com/css?family=Anton|Nunito:400,700|Oswald|Poppins', false );
+}
+
+add_action( 'wp_enqueue_scripts', 'wpb_add_google_fonts' );
 
 	/**
 	* Adds custom classes to the array of body classes.
@@ -427,3 +386,35 @@ function _theme_setup()
     //Theme Support
     add_theme_support( 'menus' );
 }
+
+// custom style in acf text editor
+function my_acf_admin_head() {
+	?>
+	<style type="text/css">
+
+	.postbox .inside {
+	margin: 11px 0;
+	position: relative;
+	background-color: #d9d0c9;
+}
+.acf-flexible-content .layout .acf-fc-layout-handle {
+    border-bottom: 1px solid #e1e1e1;
+    color: #333333;
+    cursor: move;
+    display: block;
+    font-size: 14px;
+    line-height: 1.4em;
+    padding: 8px 10px;
+    position: relative;
+		background-color: #e8b901;
+}
+
+	</style>
+
+
+	<?php
+}
+
+add_action('acf/input/admin_head', 'my_acf_admin_head');
+
+?>

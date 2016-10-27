@@ -21,45 +21,66 @@
 		<?php wp_head(); ?>
 	</head>
 	<body <?php body_class(); ?>>
+		<div class="off-canvas-wrapper">
+		  <div class="off-canvas-wrapper-inner" data-off-canvas-wrapper>
+				  <div class="off-canvas-content" data-off-canvas-content>
+							<header class="title-bar">
+									<div class="portfolio-menu">
+										<a class="float-left menu-trigger-folio"  data-open="offCanvasLeft">
+											<span><span class="ion-android-menu icon-menu"></span> works </span>
+										</a>
+										</div>
+											<div class="logo-wrapper hide-for-small-only">
+												<div class="logo">
+													<img src="http://res.cloudinary.com/thinkdigital/image/upload/v1476613538/logo-folio_iywawc.png">
+												</div>
+											</div>
+											<div class="main-menu">
+												<a class="float-right menu-trigger-folio" data-open="offCanvasRight">
+													<span> menu <span class="ion-android-menu icon-menu"></span></span>
+												</a>
+											</div>
+								</header>
+								<div class="off-canvas position-left" id="offCanvasLeft" data-off-canvas>
 
-		<header class="title-bar">
-			<div class="portfolio-menu">
-				<a class="float-left menu-trigger-folio " id="left-menu" href="#left-menu">
-					<span><span class="ion-android-menu icon-menu"></span> works </span>
-				</a>
-				</div>
-				<div class="logo-wrapper hide-for-small-only">
-					<div class="logo">
-						<img src="http://res.cloudinary.com/thinkdigital/image/upload/v1476613538/logo-folio_iywawc.png">
-					</div>
-				</div>
-				<div class="main-menu">
-					<a class="float-right menu-trigger-folio" id="right-menu" href="#right-menu">
-						<span> menu <span class="ion-android-menu icon-menu"></span></span>
-					</a>
-				</div>
-			</header>
-			<div id="sidr-left">
-		<?php
-wp_nav_menu(array(
-    'container' => false,
-    'menu' => __( 'Drill Menu', 'textdomain' ),
-    'menu_class' => 'vertical menu',
-    'theme_location' => 'drill-menu',
-    'items_wrap'      => '<ul id="%1$s" class="%2$s" data-drilldown="">%3$s</ul>',
-    //Recommend setting this to false, but if you need a fallback...
-    'fallback_cb' => 'f6_drill_menu_fallback',
-    'walker' => new F6_DRILL_MENU_WALKER(),
-));
-?>
-			</div>
-			<div id="sidr-right">
-				<ul>
-					<li><a  href="http://foundation.zurb.com/sites/docs/off-canvas.html">List 1</a></li>
-					<li class="active"><a href="#">List 2</a></li>
-					<li><a href="#">List 3</a></li>
-				</ul>
-			</div>
+										<!-- Close button -->
+										<button class="close-button" aria-label="Close menu" type="button" data-close>
+	<span aria-hidden="true">&times;</span>
+</button>
+
+										<!-- Menu -->
+										<?php
+								wp_nav_menu(array(
+										'container' => false,
+										'menu' => __( 'Drill Menu', 'textdomain' ),
+										'menu_class' => 'vertical menu',
+										'theme_location' => 'drill-menu',
+										'items_wrap'      => '<ul id="%1$s" class="%2$s" data-drilldown="">%3$s</ul>',
+										//Recommend setting this to false, but if you need a fallback...
+										'fallback_cb' => 'f6_drill_menu_fallback',
+										'walker' => new F6_DRILL_MENU_WALKER(),
+								));
+								?>
+
+								</div>
+
+								<div class="off-canvas position-right" id="offCanvasRight" data-off-canvas data-position="right">
+									<!-- Close button -->
+									<button class="close-button" aria-label="Close menu" type="button" data-close>
+<span aria-hidden="true">&times;</span>
+</button>
+<!-- Main Menu -->
+									<?php if ( has_nav_menu( 'primary' ) ) : ?>
+							<nav id="site-navigation" class="main-navigation" role="navigation" aria-label="<?php esc_attr_e( 'Primary Menu', 'twentysixteen' ); ?>">
+								<?php
+									wp_nav_menu( array(
+										'theme_location' => 'primary',
+										'menu_class'     => 'primary-menu',
+									 ) );
+								?>
+							</nav><!-- .main-navigation -->
+						<?php endif; ?>
+								</div>
 
             <div id="loader" class="pageload-overlay" data-opening="M -18 -26.90625 L -18 86.90625 L 98 86.90625 L 98 -26.90625 L -18 -26.90625 Z M 40 29.96875 C 40.01804 29.96875 40.03125 29.98196 40.03125 30 C 40.03125 30.01804 40.01804 30.03125 40 30.03125 C 39.98196 30.03125 39.96875 30.01804 39.96875 30 C 39.96875 29.98196 39.98196 29.96875 40 29.96875 Z">
                      <svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" viewBox="0 0 80 60" preserveAspectRatio="xMidYMid slice">
