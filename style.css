@@ -277,31 +277,7 @@ optgroup {
  * 2.0 - Genericons
  */
 
-.menu-item-has-children a:after,
-.social-navigation a:before,
-.dropdown-toggle:after,
-.bypostauthor > article .fn:after,
-.comment-reply-title small a:before,
-.pagination .prev:before,
-.pagination .next:before,
-.pagination .nav-links:before,
-.pagination .nav-links:after,
-.search-submit:before {
-	-moz-osx-font-smoothing: grayscale;
-	-webkit-font-smoothing: antialiased;
-	display: inline-block;
-	font-family: "Genericons";
-	font-size: 16px;
-	font-style: normal;
-	font-variant: normal;
-	font-weight: normal;
-	line-height: 1;
-	speak: none;
-	text-align: center;
-	text-decoration: inherit;
-	text-transform: none;
-	vertical-align: top;
-}
+
 
 
 /**
@@ -630,7 +606,7 @@ input[type="reset"]:hover,
 input[type="reset"]:focus,
 input[type="submit"]:hover,
 input[type="submit"]:focus {
-	background: #007acc;
+	color: currentColor;
 }
 
 button:focus,
@@ -1703,7 +1679,7 @@ blockquote:after,
 }
 
 .entry-title {
-	font-family: Montserrat, "Helvetica Neue", sans-serif;
+	font-family: 'Nunito', sans-serif;
 	font-size: 28px;
 	font-size: 1.75rem;
 	font-weight: 700;
@@ -1712,13 +1688,27 @@ blockquote:after,
 }
 
 .entry-title a {
-	color: #1a1a1a;
+	color: #121212;
 }
 
 .entry-title a:hover,
 .entry-title a:focus {
-	color: #007acc;
+	color: #ccc;
 }
+
+.archive-link {
+	font-family: 'Nunito', sans-serif;
+	color: #121212;
+	font-weight: 700;
+	font-size: 22px;
+}
+
+.archive-link:hover {
+	font-family: 'Nunito', sans-serif;
+	color: #ccc;
+	font-weight: 700;
+}
+
 
 .post-thumbnail {
 	display: block;
@@ -2052,7 +2042,7 @@ body:not(.search-results) .entry-summary > :last-child,
 }
 
 .page-header {
-	border-top: 4px solid #1a1a1a;
+
 	margin: 0 7.6923% 3.5em;
 	padding-top: 1.75em;
 }
@@ -2167,7 +2157,7 @@ body.search-no-results .page-header {
 .format-audio .entry-title,
 .format-chat .entry-title {
 	font-size: 19px;
-	font-size: 1.1875rem;
+	font-size: 1.075rem;
 	line-height: 1.473684211;
 	margin-bottom: 1.473684211em;
 }
@@ -3980,4 +3970,3 @@ p > video {
 		padding: 0;
 	}
 }
-

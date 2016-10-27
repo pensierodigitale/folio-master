@@ -10,16 +10,18 @@
 */
 ?>
  <!-- Close barba-container & braba-wrapper -->
- </div>
+       </div>
+     </div>
+    <footer class="footer push" role="contentinfo">
+    	<div id="inner-footer" class="row">
+    		<div class="large-12 medium-12 columns">
+    			<p class="source-org copyright">&copy; 2016 Bio.</p>
+    		</div>
+    		</div> <!-- end #inner-footer -->
+    	</footer>
+   </div>
+  </div>
 </div>
-<footer class="footer push" role="contentinfo">
-	<div id="inner-footer" class="row">
-		<div class="large-12 medium-12 columns">
-			<p class="source-org copyright">&copy; 2016 Bio.</p>
-		</div>
-		</div> <!-- end #inner-footer -->
-	</footer>
-
 	<?php wp_footer(); ?>
 </body>
 </html>
