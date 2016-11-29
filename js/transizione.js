@@ -62,6 +62,14 @@ console.log("Ready TRANS");
         // The Transition has just finished.
         console.log("onEnterCompleted");
         jQuery(document).foundation();
+		
+       // sr.reveal('.content-portfolio', { delay: 900, distance: '20px', origin: 'right', scale: 0});
+       // sr.reveal('.message', { delay: 1100, distance: '20px', origin: 'left', scale: 0});
+       // sr.reveal('li.lista-service', { delay: 900, distance: '20px', origin: 'right', scale: 0});
+       // sr.reveal('.portfolio-menu', { delay: 1100, distance: '20px', origin: 'left', scale: 0});
+       // sr.reveal('.main-menu', { delay: 1100, distance: '20px', origin: 'right', scale: 0});
+       // sr.reveal('.logo', { delay: 1100, distance: '20px', origin: 'top', scale: 0});
+
 
     },
     onLeave: function() {
@@ -105,6 +113,12 @@ console.log("Ready TRANS");
     //Questo metodo viene sempre eseguito anche al caricamento della prima pagina
     //SE il barba container è hidden sono nella prima pagina!!
     var localAnim = function () {
+      jQuery(".open-share").click(function () {
+            jQuery("#share-panel").velocity({ bottom: "0px" });
+          });
+         jQuery("#close-share").click(function () {
+            jQuery("#share-panel").velocity({ bottom: "-45px" });
+          });
             // jQuery("#more").velocity({
             //     translateX: "200px",
             //     rotateZ: "360deg"

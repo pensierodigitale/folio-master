@@ -4,7 +4,7 @@
  *
  * @link https://codex.wordpress.org/Creating_an_Error_404_Page
  *
- * @package Folio_Theme
+ * @package FolioTheme
  */
 
 get_header(); ?>
@@ -12,49 +12,10 @@ get_header(); ?>
 	<div id="primary" class="content-area">
 		<main id="main" class="site-main" role="main">
 
-			<section class="error-404 not-found">
-				<header class="page-header">
-					<h1 class="page-title"><?php esc_html_e( 'Oops! That page can&rsquo;t be found.', 'folio-portfolio-theme' ); ?></h1>
+			<section class="error-404 not-found vh-100 dt w-100 bg-pink">
+				<header class="page-header dtc v-mid tc white ph3 ph4-l">
+					<h1 class="page-title f6 f2-m f-subheadline-l fw6 tc"><?php esc_html_e( 'Oops! That page can&rsquo;t be found.', 'folio-simple-portoflio-wordpress-theme' ); ?></h1>
 				</header><!-- .page-header -->
-
-				<div class="page-content">
-					<p><?php esc_html_e( 'It looks like nothing was found at this location. Maybe try one of the links below or a search?', 'folio-portfolio-theme' ); ?></p>
-
-					<?php
-						get_search_form();
-
-						the_widget( 'WP_Widget_Recent_Posts' );
-
-						// Only show the widget if site has multiple categories.
-						if ( folio_portfolio_theme_categorized_blog() ) :
-					?>
-
-					<div class="widget widget_categories">
-						<h2 class="widget-title"><?php esc_html_e( 'Most Used Categories', 'folio-portfolio-theme' ); ?></h2>
-						<ul>
-						<?php
-							wp_list_categories( array(
-								'orderby'    => 'count',
-								'order'      => 'DESC',
-								'show_count' => 1,
-								'title_li'   => '',
-								'number'     => 10,
-							) );
-						?>
-						</ul>
-					</div><!-- .widget -->
-
-					<?php
-						endif;
-
-						/* translators: %1$s: smiley */
-						$archive_content = '<p>' . sprintf( esc_html__( 'Try looking in the monthly archives. %1$s', 'folio-portfolio-theme' ), convert_smilies( ':)' ) ) . '</p>';
-						the_widget( 'WP_Widget_Archives', 'dropdown=1', "after_title=</h2>$archive_content" );
-
-						the_widget( 'WP_Widget_Tag_Cloud' );
-					?>
-
-				</div><!-- .page-content -->
 			</section><!-- .error-404 -->
 
 		</main><!-- #main -->
@@ -62,3 +23,5 @@ get_header(); ?>
 
 <?php
 get_footer();
+
+

@@ -1,53 +1,32 @@
 <?php
 /**
- * The template part for displaying results in search pages
+ * Template part for displaying results in search pages.
  *
- * @package WordPress
- * @subpackage Twenty_Sixteen
- * @since Twenty Sixteen 1.0
+ * @link https://codex.wordpress.org/Template_Hierarchy
+ *
+ * @package FolioTheme
  */
+
 ?>
 
-<article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
+<article id="post-<?php the_ID(); ?>" class="fl w-100 w-50-m  w-25-ns pa2-ns">
 	<header class="entry-header">
-		<?php the_title( sprintf( '<h2 class="entry-title"><a href="%s" rel="bookmark">', esc_url( get_permalink() ) ), '</a></h2>' ); ?>
+		<?php the_title( sprintf( '<h2 class="entry-title"><a class="link dim black-80 b" href="%s" rel="bookmark">', esc_url( get_permalink() ) ), '</a></h2>' ); ?>
+		<div class="thumbnail aspect-ratio aspect-ratio--1x1">
+		    <?php the_post_thumbnail()?>
+		</div>
+		<?php if ( 'post' === get_post_type() ) : ?>
+		<div class="entry-meta">
+			<?php folio_simple_portoflio_wordpress_theme_posted_on(); ?>
+		</div><!-- .entry-meta -->
+		<?php endif; ?>
 	</header><!-- .entry-header -->
 
-	<?php twentysixteen_post_thumbnail(); ?>
+	<div class="entry-summary">
+		<?php the_excerpt(); ?>
+	</div><!-- .entry-summary -->
 
-	<?php twentysixteen_excerpt(); ?>
-
-	<?php if ( 'post' === get_post_type() ) : ?>
-
-		<footer class="entry-footer">
-			<?php twentysixteen_entry_meta(); ?>
-			<?php
-				edit_post_link(
-					sprintf(
-						/* translators: %s: Name of current post */
-						__( 'Edit<span class="screen-reader-text"> "%s"</span>', 'twentysixteen' ),
-						get_the_title()
-					),
-					'<span class="edit-link">',
-					'</span>'
-				);
-			?>
-		</footer><!-- .entry-footer -->
-
-	<?php else : ?>
-
-		<?php
-			edit_post_link(
-				sprintf(
-					/* translators: %s: Name of current post */
-					__( 'Edit<span class="screen-reader-text"> "%s"</span>', 'twentysixteen' ),
-					get_the_title()
-				),
-				'<footer class="entry-footer"><span class="edit-link">',
-				'</span></footer><!-- .entry-footer -->'
-			);
-		?>
-
-	<?php endif; ?>
+	<footer class="entry-footer">
+		<?php folio_simple_portoflio_wordpress_theme_entry_footer(); ?>
+	</footer><!-- .entry-footer -->
 </article><!-- #post-## -->
-

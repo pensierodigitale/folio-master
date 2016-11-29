@@ -1,51 +1,61 @@
 <?php
 /**
- * The template for displaying category works.
- *
- * @link https://codex.wordpress.org/Template_Hierarchy
- *
- * @package Folio_Theme
- */
+* A Simple Category Template
+*/
 
 get_header(); ?>
 
-<main id="container"  role="main">
+<section id="primary" class="site-content">
+<div id="content" role="main">
+<?php
+// Check if there are any posts to display
+if ( have_posts() ) : ?>
 
-	<?php
-	if ( have_posts() ) : ?>
+<header class="archive-header">
+<?php
+// Since this template will only be used for Design category
+// we can add category title and description manually.
+// or even add images or change the layout
+?>
 
-		<header class="page-header text-center">
-			<?php
-				the_archive_title( '<h1 class="page-title">', '</h1>' );
 
-			?>
-		</header><!-- .page-header -->
-		<hr>
-		<div class="row ">
+</header>
 
-		<?php
-		/* Start the Loop */
-		while ( have_posts() ) : the_post();
+<?php
 
-			/*
-			 * Include the Post-Format-specific template for the content.
-			 * If you want to override this in a child theme, then include a file
-			 * called content-___.php (where ___ is the Post Format name) and that will be used instead.
-			 */
-			get_template_part( 'template-parts/content', get_post_format() );
+// The Loop
+while ( have_posts() ) : the_post();
 
-		endwhile;
 
-		the_posts_navigation();
+$thumbnail = wp_get_attachment_image_src(get_post_thumbnail_id($post->ID), 'large');
+?>
 
-	else :
+<div class="small-12 medium-3 large-3 columns">
+    <div class="aspect-ratio aspect-ratio--1x1 ">
+      <a href="<?php the_permalink(); ?>">
+      <img style="background-image:url(<?php echo $thumbnail[0]; ?>);"
+      class="db bg-center cover aspect-ratio--object" /></a>
+    </div>
+     <header class="entry-header">
+    <a  href="<?php the_permalink(); ?>">
+    <h1 class="entry-title  dark-gray f4 lh-title fw9 mb3 mt0 pt3 bt bw2 mt3">
+       <?php the_title(); ?>
+    </h1>
+    <h3 class="f6 f5 fw4 mt2 black-60"> <?php
+               $category = get_the_category( $post->ID );
+               echo $category[0]->cat_name;?></h3>
+  </a>
+  </header><!-- .entry-header -->
+ </div>
 
-		get_template_part( 'template-parts/content', 'none' );
 
-	endif; ?>
+<?php endwhile; // End Loop
+
+else: ?>
+<p>Sorry, no posts matched your criteria.</p>
+<?php endif; ?>
 </div>
-<hR>
-</main><!-- .site-main -->
+</section>
 
 
-<?php get_footer();
+<?php get_footer(); ?>

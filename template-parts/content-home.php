@@ -10,6 +10,7 @@
 </style>
 
 
+
   <?php  if( have_rows('layout') ): ?>
   <?php   while ( have_rows('layout') ) : the_row();?>
     <div class="row  expanded row-no-margin">
@@ -36,10 +37,6 @@
        </div>
    </div>
 <?php endif; ?>
-
-
-
-
 
 <?php if( get_row_layout() == 'half_columns' ):?>
        <div class="large-6 medium-6 small-12 columns columns-no-margin text-center">
@@ -78,11 +75,6 @@
             </div>
         </div>
   <?php endif; ?>
-
-
-
-
-
 
 <?php if( get_row_layout() == 'third_columns' ):?>
        <div class="large-4 medium-4 small-12 columns columns-no-margin text-center">
